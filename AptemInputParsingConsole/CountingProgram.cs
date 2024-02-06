@@ -15,7 +15,8 @@ namespace AptemInputParsing
 
         public static string CountItems(string userInput)
         {
-            if (string.IsNullOrEmpty(userInput)) throw new Exception("User input was not expected to be blank / null");
+            if (string.IsNullOrEmpty(userInput))
+                throw new Exception("User input was not expected to be blank / null");
 
             var ResultingItemCounts = new Dictionary<char, int>();
 
