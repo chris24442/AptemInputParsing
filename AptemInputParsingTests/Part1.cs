@@ -12,9 +12,9 @@ namespace AptemInputParsingTests
             var input = "aaaa eeeeee bb c aa ccc d";
             var expectedResult = "6a 2b 4c 1d 6e";
 
-            var output = CountingProgram.CountItems(input);
+            Warehouse warehouse = new(input ?? "");
 
-            Assert.AreEqual(expectedResult, output);
+            Assert.AreEqual(expectedResult, warehouse.ToString());
         }
 
         [TestMethod]
@@ -23,9 +23,9 @@ namespace AptemInputParsingTests
             var input = "eeeeee bb c aa ccc d aa ";
             var expectedResult = "4a 2b 4c 1d 6e";
 
-            var output = CountingProgram.CountItems(input);
+            Warehouse warehouse = new(input ?? "");
 
-            Assert.AreEqual(expectedResult, output);
+            Assert.AreEqual(expectedResult, warehouse.ToString());
         }
     }
 }
