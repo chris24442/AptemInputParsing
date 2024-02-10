@@ -1,18 +1,17 @@
-﻿using AptemInputParsing;
-using System;
-using System.Text;
+﻿using System.Text;
 
 namespace AptemInputParsing
 {
     public class Warehouse
     {
         readonly Dictionary<char, int> ItemsInWarehouse = [];
+        private readonly IMessageParser _messageParser;
 
-        public Warehouse(string input)
+        public Warehouse(string input, IMessageParser messageParser)
         {
-            int messageType = InputParser.IdentifyMessageType(input);
-            input = InputParser.TrimMessage(input, messageType);
-            ItemsInWarehouse = InputParser.UpdateItems(input, messageType);
+            _messageParser = messageParser;
+
+            ItemsInWarehouse = _messageParser.UpdateItems(input);
         }
 
         public override string ToString()

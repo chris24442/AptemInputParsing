@@ -1,7 +1,4 @@
-﻿using System.Text;
-using System.Text.RegularExpressions;
-
-namespace AptemInputParsing
+﻿namespace AptemInputParsing
 {
     public class CountingProgramConsole
     {
@@ -10,9 +7,11 @@ namespace AptemInputParsing
             Console.Write("Enter the input stock message: ");
             string userInput = Console.ReadLine() ?? "";
 
-            // TODO: Check valid input?
+            // Create the appropriate message parser
+            IMessageParser messageParser = MessageParserFactory.CreateMessageParser(userInput);
 
-            Warehouse warehouse = new(userInput);
+            // Pass the messageParser instance to the Warehouse constructor
+            Warehouse warehouse = new(userInput, messageParser);
 
             Console.WriteLine(warehouse.ToString());
         }
